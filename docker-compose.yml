@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  x2crm-db:
+    image: danilkuznetsov/alpine-mariadb
+    volumes:
+      - ./db:/DATA/
+      - /etc/localtime:/etc/localtime:ro
+
+  alpine-apache-php:
+    build: ./alpine-apache-php
+    volumes:
+      - ./www:/app
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "8080:80"
+    links:
+      - x2crm-db
+    depends_on:
+      - x2crm-db
+   

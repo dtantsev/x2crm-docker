@@ -1,0 +1,2 @@
+*	*	*	*	*	/app/protected/yiic cron &>/dev/null
+*	*	*	*	*	/app/protected/yiic logEmail &>/dev/null
