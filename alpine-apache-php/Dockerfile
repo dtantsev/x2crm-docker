@@ -43,6 +43,8 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/reposit
 RUN mkdir /run/apache2 \
     && sed -i 's/#LoadModule\ rewrite_module/LoadModule\ rewrite_module/' /etc/apache2/httpd.conf \
     && sed -i -e "s:;\s*session.save_path\s*=\s*\"N;/path\":session.save_path = /phpsession:g" /etc/php5/php.ini \
+    && sed -i 's/max_execution_time = .*/max_execution_time = '300'/' /etc/php5/php.ini \
+    && sed -i 's/memory_limit = .*/memory_limit = '1024M'/' /etc/php5/php.ini \
     && mkdir -p /opt/utils \
     && mkdir /phpsession \
     && chown -R apache:apache /phpsession 

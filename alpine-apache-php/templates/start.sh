@@ -6,4 +6,4 @@ printf "\n<Directory \"/app/$WEBAPP_ROOT\">\n\tAllowOverride All\n</Directory>\n
 chown -R apache:apache /app
 crond -l 2
 
-httpd -D FOREGROUND
+httpd -DFOREGROUND
