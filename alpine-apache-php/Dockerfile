@@ -45,6 +45,8 @@ RUN mkdir /run/apache2 \
     && sed -i -e "s:;\s*session.save_path\s*=\s*\"N;/path\":session.save_path = /phpsession:g" /etc/php5/php.ini \
     && sed -i 's/max_execution_time = .*/max_execution_time = '300'/' /etc/php5/php.ini \
     && sed -i 's/memory_limit = .*/memory_limit = '1024M'/' /etc/php5/php.ini \
+    && sed -i "s#^DocumentRoot \".*#DocumentRoot \"/app/\"#g" /etc/apache2/httpd.conf \
+    && sed -i "s#/var/www/localhost/htdocs#/app/#" /etc/apache2/httpd.conf \
     && mkdir -p /opt/utils \
     && mkdir /phpsession \
     && chown -R apache:apache /phpsession 
